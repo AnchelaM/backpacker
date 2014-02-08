@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>GlobalXplorer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+
+        <!-- STATIC_URL is a django shortcut.-->
+   <link href="{{ STATIC_URL }}css/foundation.css" rel="stylesheet">
+   <link href="{{ STATIC_URL }}css/normalize.css" rel="stylesheet">
+   <script src="{{ STATIC_URL }}js/vendor/custom.modernizr.js"></script>
+
+    <!-- Fonts from google -->
+    <link href='http://fonts.googleapis.com/css?family=Delius+Swash+Caps' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="large-12 columns">
+
+            <div class="large-3 columns large-offset-1 right">
+                <div class="lng right"><a href="/" class="clickbutton">English</a> </div>
+                <div class="lng right"><a href="/indexee" class="clickbutton">Eesti</a> </div>
+                 <div class="logo"><a href="/"><img src="{{ STATIC_URL }}images/LogoNew.png" alt="Logo Global eXplorer"></a></div>
+                <div class="hrsmall"></div>
+                <p style="font-style: italic">'Travel brings power and love back into your life' - Rumi</p>
+
+        <!-- Tag cloud -->
+{% load taggit_extras %}
+
+               {% get_taglist as tags %}
+
+{% for tag in tags %}
+  <a href="/category/{{ tag.slug }}">{{ tag }}</a>
+<!--{{tag}} ({{tag.num_times}})-->
+{% endfor %}
+
+        <!-- End of Tag Cloud -->
+
+                  <!--Orbit slide panel -->
+            <div class="panel">Favorites</div>
+            <div class="slidepanel">
+                <div class="orbit-container">
+                <ul data-orbit
+                data-options="animation: fade;
+                        timer_speed: 7000;
+                        pause_on_hover:true;
+                        animation_speed:1300;
+                        navigation_arrows:false;
+                        bullets:false;">
+                <li>
+                <img src="../../../static/images/A.Bbook.jpg" alt="slide 1" />
+             <div class="orbit-caption">
+            <pre style="line-height: 0.75em;">
+                Book
+                Kitchen Confidential
+                A.Bourdain</pre>
+            </div>
+                </li>
+
+                <li class="active">
+                <img src="../../../static/images/EmGbook.jpg" alt="slide 2" />
+             <div class="orbit-caption">
+           <pre style="line-height: 0.75em;">
+                 Book
+                 Eat My Globe
+                 S.Majumdar</pre>
+            </div>
+                </li>
+
+                <li>
+                <img src="../../../static/images/g.ramsayBook.jpg" alt="slide 3" />
+            <div class="orbit-caption">
+            <pre style="line-height: 0.75em;">
+                Book
+                Humble Pie
+                G.Ramsay</pre>
+            </div>
+                </li>
+                </ul>
+                </div>
+            </div>
+        <!-- End of Orbit slide panel -->
+            </div>
+
+
+     {% block content %}
+
+      {% endblock %}
+
+      </div>
+    </div>
+
+         <!-- Footer -->
+     <footer class="row">
+    <div class="large-12 columns">
+        <div class="hrsmall"></div>
+        <div class="large-6 columns left">
+            <p> &#169; 2014 GlobalXplorer. All Rights reserved. </p>
+        </div>
+        <div class="large-2 columns right">
+            <ul class="no-bullet">
+            <li><a href="/about" class="clickbutton">About</a></li>
+        </ul>
+        </div>
+    </div>
+    </footer>
+
+
+
+
+ <script>
+  document.write('<script src=js/vendor/' +
+  ('__proto__' in {} ? 'zepto' : 'jquery') +
+  '.js><\/script>')
+  </script>
+    <script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
+
+    <script src="{{ STATIC_URL }}js/foundation/foundation.js"></script>
+    <script src="{{ STATIC_URL }}js/foundation/foundation.orbit.js"></script>
+ <script src="{{ STATIC_URL }}js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+
+   </body>
+</html>
